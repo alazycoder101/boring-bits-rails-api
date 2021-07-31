@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include Pundit
 
   rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
 
