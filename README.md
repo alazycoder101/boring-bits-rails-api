@@ -20,11 +20,13 @@ Ensure you have Ruby 2.6.x and Rails 6 installed on your machine.
 
 Clone this repository, then specify your local path to `template.rb` with the `-m` flag: 
 
-``` 
-$ rails new YourAppName --api -m ../local/path/to/template.rb
+```
+$ docker-compose build --build-arg APP="YourAppName"
+$ APP=YourAppName docker-compose run web bash
+$ rails new YourAppName --api -m template.rb
 ```
 
-The template will install all necessary gems, and create a new database for you. Check everything is installed correctly by cd-ing into `YourAppName`, then running the specs with: 
+The template will install all necessary gems, and create a new database for you. Check everything is installed correctly by cd-ing into `YourAppName`, then running the specs with:
 
 ```
 $ foreman run rake
