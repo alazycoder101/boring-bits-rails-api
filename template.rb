@@ -15,13 +15,14 @@ add_source 'https://rubygems.org'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'pundit'
 gem 'devise-jwt', '~> 0.7.0'
 gem 'foreman'
 gem 'jsonapi-rails'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 5.3'
 gem 'rack-cors'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
+gem 'rails', '~> 6.1.4', '>= 6.0.3.2'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem_group :development, :test do
@@ -32,7 +33,9 @@ end
 
 gem_group :development do
   gem 'listen', '~> 3.2'
-  gem 'rubocop'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
   gem 'solargraph'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
