@@ -27,7 +27,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem_group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 5.0.1'
   gem 'factory_bot_rails'
 end
 
@@ -62,6 +62,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DATABASE_USER'] || `whoami` %>
+  host: <%= ENV['DATABASE_HOST'] || '127.0.0.1' %>
+  port: <%= ENV['DATABASE_PORT'] || 5432 %>
+  database: <%= ENV['DATABASE_NAME'] %>
 
 development:
   <<: *default
@@ -108,6 +112,9 @@ rails_command('db:migrate')
 ## --------------------------------------------------
 
 copy_and_replace '.gitignore'
+
+copy_and_replace 'Dockerfile'
+copy_and_replace 'docker-compose.yml'
 
 ## Controllers
 copy_and_replace 'app/controllers/application_controller.rb'
